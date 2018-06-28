@@ -181,7 +181,7 @@ HOST_OS_VERS_MINOR=$(echo $HOST_OS_VERS | awk -F "." '{print $2}')
 HOST_OS_VERS_PATCH=$(echo $HOST_OS_VERS | awk -F "." '{print $3}')
 msg_status "host macOS version detected: $HOST_OS_VERS_MAJOR.$HOST_OS_VERS_MINOR.$HOST_OS_VERS_PATCH"
 
-if [ "$DMG_OS_VERS_MAJOR" != "$DMG_OS_VERS_MAJOR" ] || [ "$DMG_OS_VERS_MINOR" != "$HOST_OS_VERS_MINOR" ]; then
+if [ "$DMG_OS_VERS_MAJOR" != "$HOST_OS_VERS_MAJOR" ] || [ "$DMG_OS_VERS_MINOR" != "$HOST_OS_VERS_MINOR" ]; then
 	exit_with_error "Unfortunately prepare_vdi can only generate images of same version as the host"
 fi
 
