@@ -22,7 +22,7 @@ create_firstboot_pkg() {
   mkdir -p "$SUPPORT_DIR/pkgroot/private/var/db/dslocal/nodes/Default/users"
   mkdir -p "$SUPPORT_DIR/pkgroot/private/var/db/shadow/hash"
   BASE64_IMAGE=$(openssl base64 -in "$IMAGE_PATH")
-  ShadowHashData=$($SCRIPT_DIR/../scripts/support/generatehash.py "$PASSWORD")
+  ShadowHashData=$("$SCRIPT_DIR/../scripts/support/generatehash.py" "$PASSWORD")
   # Replace USER and BASE64_IMAGE in the user.plist file with the actual user and image
   render_template "$SUPPORT_DIR/user.plist" > "$SUPPORT_DIR/pkgroot/private/var/db/dslocal/nodes/Default/users/$USER.plist"
   USER_GUID=$(/usr/libexec/PlistBuddy -c 'Print :generateduid:0' "$SUPPORT_DIR/user.plist")
